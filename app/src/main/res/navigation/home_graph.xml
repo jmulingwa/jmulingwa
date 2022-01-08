@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.eShuttle.ui.HomeFragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_pendingPayBookingsFragment"
+            app:destination="@id/pendingPayBookingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.eShuttle.ui.HomeFragments.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_in_left"
+        app:popEnterAnim="@anim/slide_out_left"
+        app:popExitAnim="@anim/slide_out_right">
+        <action
+            android:id="@+id/action_bookingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_bookingFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.eShuttle.ui.HomeFragments.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_pendingPayBookingsFragment"
+            app:destination="@id/pendingPayBookingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pendingPayBookingsFragment"
+        android:name="com.example.eShuttle.ui.HomeFragments.PendingPayBookingsFragment"
+        android:label="fragment_pending_pay_bookings"
+        tools:layout="@layout/fragment_pending_pay_bookings" >
+        <action
+            android:id="@+id/action_pendingPayBookingsFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+</navigation>

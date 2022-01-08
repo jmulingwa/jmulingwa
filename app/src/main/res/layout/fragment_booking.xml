@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:elevation="0dp"
+    tools:context=".ui.HomeFragments.BookingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/btn_bg_2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/texHello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Book a Trip"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/goBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/primaryDarkColor"
+            android:src="@drawable/arrow_left"
+            app:layout_constraintBottom_toTopOf="@+id/texHello"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="always"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/viewDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/fromAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableStart="@drawable/ic_baseline_near_me_24"
+                android:drawablePadding="4dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="From"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".9" />
+
+            <EditText
+                android:id="@+id/toAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableStart="@drawable/ic_baseline_edit_location_24"
+                android:drawablePadding="4dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="To"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/fromAddress"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fromAddress"
+                app:layout_constraintTop_toBottomOf="@+id/fromAddress"
+                app:layout_constraintWidth_percent=".9" />
+
+            <View
+                android:id="@+id/viewDiv"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="20dp"
+                android:background="@color/grey"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/toAddress"
+                app:layout_constraintTop_toBottomOf="@+id/toAddress"
+                tools:layout_editor_absoluteX="20dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/timeDateInfor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintEnd_toEndOf="@+id/toAddress"
+                app:layout_constraintStart_toStartOf="@+id/toAddress"
+                app:layout_constraintTop_toBottomOf="@id/toAddress"
+                app:layout_constraintWidth_percent=".9">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputTime"
+                    style="@style/CustomFilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Pick time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintWidth_percent=".4"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp">
+
+                    <!-- Inside text input layout add
+                          an auto complete text view
+                            and make its input type to none-->
+
+                    <AutoCompleteTextView
+                        android:id="@+id/timeSchedules"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:inputType="none"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/pickADate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:src="@drawable/date"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInputTime"
+                    app:layout_constraintStart_toEndOf="@+id/textInputTime"
+                    app:layout_constraintTop_toTopOf="@+id/textInputTime"
+                    app:layout_constraintVertical_bias="0.703" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editTextSelectedDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="eg. 12/1/2022"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp"
+                    android:layout_margin="2dp"
+                    app:layout_constraintWidth_percent=".4"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInputTime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/pickADate"
+                    app:layout_constraintTop_toTopOf="@+id/textInputTime">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pickedDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutFinished"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/timeDateInfor"
+                app:layout_constraintHeight_percent=".15"
+                app:layout_constraintStart_toStartOf="@+id/timeDateInfor"
+                app:layout_constraintTop_toBottomOf="@id/timeDateInfor"
+                app:layout_constraintWidth_percent=".9">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInNoSeats"
+                    style="@style/CustomFilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.063"
+                    app:layout_constraintWidth_percent=".4"
+                    android:hint="No of Seats"
+                    tools:ignore="MissingConstraints">
+
+                    <!-- Inside text input layout add
+                          an auto complete text view
+                            and make its input type to none-->
+                    <AutoCompleteTextView
+                        android:id="@+id/noOfSeats"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInVehicleType"
+                    style="@style/CustomFilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInNoSeats"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.783"
+                    app:layout_constraintStart_toEndOf="@+id/textInNoSeats"
+                    app:layout_constraintTop_toTopOf="@+id/textInNoSeats"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent=".4"
+                    tools:ignore="MissingConstraints"
+                    android:hint="Vehicle type">
+
+                    <!-- Inside text input layout add
+                          an auto complete text view
+                            and make its input type to none-->
+                    <AutoCompleteTextView
+                        android:id="@+id/vehicleCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInCategory"
+                    style="@style/CustomFilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInVehicleType"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp"
+                    android:textAlignment="center"
+                    android:hint="Select who to pay">
+
+                    <!-- Inside text input layout add
+                          an auto complete text view
+                            and make its input type to none-->
+
+                    <AutoCompleteTextView
+                        android:id="@+id/whoToPay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:background="@drawable/custom_edittext"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnSubmitBooking"
+                    style="@style/Widget.eShuttle.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/book_a_trip"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.513"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInNoSeats"
+                    app:layout_constraintVertical_bias="0.534"
+                    app:layout_constraintWidth_percent=".9" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu"/>
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="20dp"
+        android:background="@color/lightYellow"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

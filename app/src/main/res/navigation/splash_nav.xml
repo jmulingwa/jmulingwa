@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="com.example.eShuttle.ui.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_screenOneFragment"
+            app:destination="@id/screenOneFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenOneFragment"
+        android:name="com.example.eShuttle.ui.onboarding.screens.ScreenOneFragment"
+        android:label="fragment_screen_one"
+        tools:layout="@layout/fragment_screen_one" >
+        <action
+            android:id="@+id/action_screenOneFragment_to_screenTwoFragment"
+            app:destination="@id/screenTwoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@id/screenOneFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenTwoFragment"
+        android:name="com.example.eShuttle.ui.onboarding.screens.ScreenTwoFragment"
+        android:label="fragment_screen_two"
+        tools:layout="@layout/fragment_screen_two" />
+</navigation>
