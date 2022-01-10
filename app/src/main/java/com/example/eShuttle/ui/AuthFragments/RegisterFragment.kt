@@ -152,7 +152,6 @@ class RegisterFragment : BaseFragment<
                                 //<<<<<<<< END >>>>>>>>
 
                                 findNavController().navigate(
-                                    //R.id.action_registerFragment_to_smsValidateFragment
                                 action
                                 )
                             },2000)

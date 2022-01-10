@@ -19,5 +19,11 @@ class UserRepository(
         apiInterface.bookRide(bookingModel)
     }
 
+    suspend fun updateUserProfile(
+        user: User
+    ) = safeApiCall {
+        apiInterface.updateUserProfile(user)
+    }
+
 
 }

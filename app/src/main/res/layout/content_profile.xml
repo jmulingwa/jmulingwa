@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.eShuttle.ui.HomeFragments.ProfileFragment"
+    tools:showIn="@layout/fragment_profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            style="@style/headerText"
+            android:text="Account Info"
+            android:layout_marginBottom="20dp"/>
+
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <ImageView
+                android:id="@+id/nameImageView"
+                style="@style/profileDetailsImage"
+                android:src="@drawable/myprofile" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/nameTextView"-->
+<!--                style="@style/profileDetailsTextMain"-->
+<!--                android:layout_toRightOf="@id/nameImageView"-->
+<!--                android:text="Name" />-->
+
+            <EditText
+                android:id="@+id/editTextfirstName"
+                style="@style/profileDetailsMiniText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_centerInParent="true"
+                android:layout_toEndOf="@id/nameImageView"
+                android:layout_toRightOf="@id/nameImageView"
+                android:background="@drawable/custom_edittext"
+                android:hint="Name"
+                android:padding="15dp" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <ImageView
+                android:id="@+id/mobileImageView"
+                style="@style/profileDetailsImage"
+                android:src="@drawable/myphone" />
+
+<!--            <TextView-->
+<!--                android:text="Mobile"-->
+<!--                android:layout_toRightOf="@id/mobileImageView"-->
+<!--                style="@style/profileDetailsTextMain"/>-->
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                style="@style/profileDetailsMiniText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/mobileImageView"
+                android:background="@drawable/custom_edittext"
+                android:hint="Phone Number"
+                android:padding="15dp" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <ImageView
+                android:id="@+id/emailImageView"
+                style="@style/profileDetailsImage"
+                android:src="@drawable/myemail" />
+
+<!--            <TextView-->
+<!--                style="@style/profileDetailsTextMain"-->
+<!--                android:layout_toRightOf="@id/emailImageView"-->
+<!--                android:text="Email" />-->
+
+            <EditText
+                android:id="@+id/editTextEmailAddress"
+                style="@style/profileDetailsMiniText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/emailImageView"
+                android:background="@drawable/custom_edittext"
+                android:hint="developer@gmail.com.com"
+                android:padding="15dp" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <ImageView
+                android:id="@+id/addressImageView"
+                style="@style/profileDetailsImage"
+                android:src="@drawable/myidnumber" />
+
+<!--            <TextView-->
+<!--                android:text="Address"-->
+<!--                android:layout_toRightOf="@id/addressImageView"-->
+<!--                style="@style/profileDetailsTextMain" />-->
+
+            <EditText
+                android:id="@+id/editTextIdNumber"
+                style="@style/profileDetailsMiniText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/addressImageView"
+                android:background="@drawable/custom_edittext"
+                android:hint="Id Number"
+                android:padding="15dp" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <ImageView
+                android:id="@+id/dobImageView"
+                style="@style/profileDetailsImage"
+                android:src="@drawable/mydate" />
+
+<!--            <TextView-->
+<!--                android:text="D.O.B"-->
+<!--                android:layout_toRightOf="@id/dobImageView"-->
+<!--                style="@style/profileDetailsTextMain" />-->
+
+            <EditText
+                android:id="@+id/editTextDateOfBirth"
+                style="@style/profileDetailsMiniText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/dobImageView"
+                android:background="@drawable/custom_edittext"
+                android:hint="12-05-1990"
+                android:padding="15dp" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <ImageView
+                android:id="@+id/genderImageView"
+                style="@style/profileDetailsImage"
+                android:src="@drawable/mygender" />
+
+            <!--            <TextView-->
+            <!--                android:text="D.O.B"-->
+            <!--                android:layout_toRightOf="@id/dobImageView"-->
+            <!--                style="@style/profileDetailsTextMain" />-->
+
+            <EditText
+                android:id="@+id/editTextGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Male"
+                android:background="@drawable/custom_edittext"
+                android:padding="15dp"
+                android:layout_toRightOf="@id/genderImageView"
+                style="@style/profileDetailsMiniText" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout style="@style/profileDetailsLayout">
+
+            <Button
+                android:id="@+id/btnUpdate"
+                style="@style/Widget.eShuttle.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:textAllCaps="false" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/transparent"/>
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

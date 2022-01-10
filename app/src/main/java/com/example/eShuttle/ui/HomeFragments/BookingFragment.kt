@@ -124,9 +124,13 @@ class BookingFragment : BaseFragment<
                         }
                         travelTime.isEmpty()->{
                             binding.textInputTime.error ="Please select travel time"
-                        }else ->{
+                        }
+                        whoIsPaying.isEmpty() ->{
+                            binding.whoToPay.error = "Please select who to pay"
+                        }
+                        else ->{
 
-                        val bookingModel = BookingModel(vehicleCategory,noOfSeats,fromAddress,toAddress,travellingTime)
+                        val bookingModel = BookingModel(vehicleCategory,noOfSeats,fromAddress,toAddress,travellingTime,whoIsPaying)
                         viewModel.bookRide(bookingModel)
 
                         //Observe the changes
@@ -134,7 +138,9 @@ class BookingFragment : BaseFragment<
                             when(response){
                                 is Resource.Success ->{
 
-                                    //TODO update UI by getting the computed price
+                                    findNavController().navigate(
+                                        R.id.action_bookingFragment_to_paymentFragment
+                                    )
                                 }
                             }
                         })
@@ -159,11 +165,62 @@ class BookingFragment : BaseFragment<
         //<<<<<<<<< Handle Full Booking  start >>>>>>>>>>>
         binding.btnSubmitBooking.setOnClickListener {
 
+            // binding views
+            val fromAddress = binding.fromAddress.text.toString()
+            println(fromAddress)
+            val toAddress = binding.toAddress.text.toString()
+            val travelTime = binding.timeSchedules.text.toString()
+            val travelDate = binding.pickedDate.text.toString()
+            val noOfSeats = binding.noOfSeats.text.toString().toInt()
+            val vehicleCategory = binding.vehicleCategory.text.toString()
+            val whoIsPaying = binding.whoToPay.text.toString()
 
+            //route Id
+            val routeId = fromAddress+toAddress
+            val travellingTime =travelTime+travelDate
+            // send data to the backend
+                when{
+                    fromAddress.isEmpty()->{
+                        Toast.makeText(requireContext(), "Please enter departure address!", Toast.LENGTH_SHORT).show()
+                    }
+                    toAddress.isEmpty()->{
+                        Toast.makeText(requireContext(), "Please enter destination address!", Toast.LENGTH_SHORT).show()
+                    }
+                    travelDate.isEmpty() ->{
+                        binding.editTextSelectedDate.error = "Please select travel date"
+                    }
+                    travelTime.isEmpty()->{
+                        binding.textInputTime.error ="Please select travel time"
+                    }
+                    whoIsPaying.isEmpty() ->{
+                        binding.whoToPay.error = "Please select who to pay"
+                    }
+                    else ->{
 
+                        val bookingModel = BookingModel(vehicleCategory,noOfSeats,fromAddress,toAddress,travellingTime,whoIsPaying)
+                        viewModel.bookRide(bookingModel)
+
+                        //Observe the changes
+                        viewModel.bookRide.observe(viewLifecycleOwner, Observer { response ->
+                            when(response){
+                                is Resource.Success ->{
+                                    findNavController().navigate(
+                                        R.id.action_bookingFragment_to_paymentFragment
+                                    )
+                                }
+                                is Resource.Error->{
+                                    Toast.makeText(requireContext(), "${response.errorBody.toString()}", Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+
+                                }
+                            }
+                        })
+                    }
+
+            }
         }
         //<<<<<<<<<<<<END of full booking >>>>>>>>>
-
         //<<<<<<<< Get computed price start >>>>>>>>>
         fun getComputedPrice(){
             // TODO updateUI with the computed price

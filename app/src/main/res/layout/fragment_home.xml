@@ -21,17 +21,16 @@
             android:background="@color/primaryTextColor"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/green"
-            app:title="Payment"
+            app:title="eShuttle"
             app:expandedTitleTextAppearance="@style/expandedTextBarStyle"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/collapsable_bg"
                 android:orientation="vertical"
                 >
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutHeader"
                     android:layout_width="match_parent"
@@ -49,6 +48,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
                         android:text="@string/hello"
+                        android:textStyle=""
                         android:textColor="@color/primaryTextColor"
                         android:textSize="25sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -60,23 +60,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="15dp"
-                        android:text=""
                         android:textColor="@color/primaryTextColor"
                         android:textSize="25sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@id/texHello"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageMenu"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="15dp"
-                        android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_menu"
-                        app:layout_constraintBottom_toBottomOf="@id/texHello"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/texHello" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -86,7 +74,7 @@
                         android:background="@drawable/white_backg"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageMenu">
+                        app:layout_constraintTop_toBottomOf="@id/textUsername">
 
                         <EditText
                             android:layout_width="0dp"
@@ -107,6 +95,25 @@
                             android:padding="6dp"
                             android:src="@drawable/search" />
 
+                        <TextView
+                            android:id="@+id/emailId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:visibility="gone"/>
+                        <TextView
+                            android:id="@+id/phoneNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:visibility="gone"/>
+
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -122,10 +129,12 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
+                android:id="@+id/topBar"
                 android:layout_height="?actionBarSize"
                 android:background="@color/primaryDarkColor"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_menu"
+                app:menu="@menu/topbarmenu"
                 app:titleTextColor="@color/primaryTextColor"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

@@ -19,6 +19,7 @@ import com.example.eShuttle.ui.HomeFragments.HomeActivity
 class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
+    private var  isPaused :Boolean =false
     // This property is only valid between onCreateView and
 // onDestroyView.
     private val binding get() = _binding!!
@@ -34,7 +35,7 @@ class SplashFragment : Fragment() {
         //Navigate to another fragment after some delay
         Handler().postDelayed({
 
-            if (onBoardingFinished()){
+            if (onBoardingFinished() && !isPaused){
                 val userPreferences = UserPreferences(requireContext())
 
                 //get token
@@ -44,9 +45,11 @@ class SplashFragment : Fragment() {
 
                 })
             }else{
+                if (!isPaused){
                 findNavController().navigate(
                     R.id.action_splashFragment_to_screenOneFragment
                 )
+                }
             }
 
         }, 8000)
@@ -59,16 +62,26 @@ class SplashFragment : Fragment() {
     }
 
     private fun onBoardingFinished() : Boolean{
-        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("Finished", false)
+        return if (context != null) {
+            val sharedPref =
+                binding.root.context.getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+            sharedPref.getBoolean("Finished", false)
+        }else{
+            true
+        }
 
 
     }
 
-//    //Destroy the fragment
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+    //Destroy the fragment
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        isPaused =true
+    }
 
 }

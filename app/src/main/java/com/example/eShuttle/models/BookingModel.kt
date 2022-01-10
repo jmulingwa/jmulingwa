@@ -6,4 +6,5 @@ data class BookingModel(
     val from: String?,
     val dest: String?,
     val travelDate: String?,
+    val paymentMode: String?
 )

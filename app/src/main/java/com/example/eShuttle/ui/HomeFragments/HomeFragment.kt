@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.eShuttle.R
 import com.example.eShuttle.api.HomeApiInterface
 import com.example.eShuttle.databinding.FragmentHomeBinding
 import com.example.eShuttle.repository.UserRepository
 import com.example.eShuttle.base.BaseFragment
+import com.example.eShuttle.responses.getUserResponse
 import com.example.eShuttle.utils.Resource
 import com.example.eShuttle.viewModels.UserViewModel
 import kotlinx.coroutines.flow.first
@@ -45,19 +47,19 @@ class   HomeFragment : BaseFragment<
 
         viewModel.getUser()
 
-        viewModel.user.observe(viewLifecycleOwner, Observer {
-            when(it){
+        viewModel.user.observe(viewLifecycleOwner, Observer {response ->
+            when(response){
                 is Resource.Success ->{
-                    updateUI(it.value.firstName)
+                    updateUI(response.value)
                 }
             }
 
         })
 
         //Logout here
-        binding.imageMenu.setOnClickListener {
-            logout()
-        }
+//        binding.imageMenu.setOnClickListener {
+//            logout()
+//        }
 
         //navigate to booking
         binding.layoutBooking.setOnClickListener {
@@ -73,12 +75,46 @@ class   HomeFragment : BaseFragment<
             )
         }
 
+        //handle menu clicks
+        binding.topBar.setOnMenuItemClickListener {menuItem ->
+            when(menuItem.itemId){
+                R.id.logout ->{
+                    logout()
+                    true
+                }
+                R.id.profileFragment ->{
+                    val username = binding.textUsername.text.toString()
+                    val phoneNumber = binding.phoneNumber.text.toString()
+                    val email = binding.emailId.text.toString()
+                    val bundle = Bundle()
+                    bundle.putString("username",username)
+                    bundle.putString("email",email)
+                    bundle.putString("phoneNumber",phoneNumber)
+                    view?.let { Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_profileFragment,bundle) }
+                    true
+
+
+                }
+                else -> {
+                    true
+                }
+            }
+        }
+
     }
 
-    private fun updateUI(firstName: String) {
+    private fun updateUI(response: getUserResponse) {
         with(binding){
-            textUsername.text = firstName
+            textUsername.text = response.firstName
+            emailId.text = response.email
+            phoneNumber.text = response.login
         }
     }
+
+    override fun onPause() {
+        viewModel.user.removeObservers(viewLifecycleOwner)
+        super.onPause()
+    }
+
 
 }

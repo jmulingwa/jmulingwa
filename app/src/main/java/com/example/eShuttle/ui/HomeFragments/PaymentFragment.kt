@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.eShuttle.R
 import com.example.eShuttle.api.HomeApiInterface
 import com.example.eShuttle.base.BaseFragment
@@ -42,6 +43,11 @@ class PaymentFragment : BaseFragment<
         super.onActivityCreated(savedInstanceState)
 
         //Write business logic here
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(
+                R.id.action_paymentFragment_to_pendingPayBookingsFragment
+            )
+        }
 
     }
     }

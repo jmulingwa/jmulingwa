@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_homeFragment_to_pendingPayBookingsFragment"
             app:destination="@id/pendingPayBookingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookingFragment"
@@ -54,9 +57,34 @@
         android:id="@+id/pendingPayBookingsFragment"
         android:name="com.example.eShuttle.ui.HomeFragments.PendingPayBookingsFragment"
         android:label="fragment_pending_pay_bookings"
-        tools:layout="@layout/fragment_pending_pay_bookings" >
+        tools:layout="@layout/fragment_pending_pay_bookings"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_in_left"
+        app:popEnterAnim="@anim/slide_out_left"
+        app:popExitAnim="@anim/slide_out_right">
         <action
             android:id="@+id/action_pendingPayBookingsFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.eShuttle.ui.HomeFragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_in_left"
+        app:popEnterAnim="@anim/slide_out_left"
+        app:popExitAnim="@anim/slide_out_right">
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>
